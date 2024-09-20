@@ -45,7 +45,7 @@ async def process_cart(message: Message, state: FSMContext):
                     data['products'][idx] = [title, price, count_in_cart]
 
                 markup = product_markup(idx, count_in_cart)
-                text = f'<b>{title}</b>\n\n{body}\n\nPrice: {price}₽.'
+                text = f'<b>{title}</b>\n\n{body}\n\nPrice: {price}£.'
 
                 await message.answer_photo(photo=image,
                                            caption=text,
@@ -123,10 +123,10 @@ async def checkout(message, state):
         for title, price, count_in_cart in data['products'].values():
 
             tp = count_in_cart * price
-            answer += f'<b>{title}</b> * {count_in_cart}pcs = {tp}₽\n'
+            answer += f'<b>{title}</b> * {count_in_cart}pcs = {tp}£\n'
             total_price += tp
 
-    await message.answer(f'{answer}\nTotal order amount: {total_price}₽.',
+    await message.answer(f'{answer}\nTotal order amount: {total_price}£.',
                          reply_markup=check_markup())
 
 

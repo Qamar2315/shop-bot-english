@@ -10,6 +10,6 @@ def product_markup(idx='', price=0):
     global product_cb
 
     markup = InlineKeyboardMarkup()
-    markup.add(InlineKeyboardButton(f'Add to cart - {price}₽', callback_data=product_cb.new(id=idx, action='add')))
+    markup.add(InlineKeyboardButton(f'Add to cart - {price}£', callback_data=product_cb.new(id=idx, action='add')))
 
     return markup
