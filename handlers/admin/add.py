@@ -192,7 +192,7 @@ async def process_price(message: Message, state: FSMContext):
         price = data['price']
 
         await ProductState.next()
-        text = f'<b>{title}</b>\n\n{body}\n\nPrice: {price} RUB.'
+        text = f'<b>{title}</b>\n\n{body}\n\nPrice: {price} GBP.'
 
         markup = check_markup()
 
@@ -254,7 +254,7 @@ async def show_products(m, products, category_idx):
     await bot.send_chat_action(m.chat.id, ChatActions.TYPING)
 
     for idx, title, body, image, price, tag in products:
-        text = f'<b>{title}</b>\n\n{body}\n\nPrice: {price} RUB.'
+        text = f'<b>{title}</b>\n\n{body}\n\nPrice: {price} GBP.'
 
         markup = InlineKeyboardMarkup()
         markup.add(InlineKeyboardButton(
