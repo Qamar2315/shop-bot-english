@@ -51,8 +51,8 @@ async def admin_mode(message: types.Message):
     if cid not in config.ADMINS:
         # config.ADMINS.append(cid)
         await message.answer('You are not an admin.', reply_markup=ReplyKeyboardRemove())
-
-    await message.answer('Admin mode enabled.', reply_markup=ReplyKeyboardRemove())
+    else:
+        await message.answer('Admin mode enabled.', reply_markup=ReplyKeyboardRemove())
 
 
 async def on_startup(dp):
