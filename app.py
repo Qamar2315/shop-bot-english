@@ -49,7 +49,8 @@ async def admin_mode(message: types.Message):
 
     cid = message.chat.id
     if cid not in config.ADMINS:
-        config.ADMINS.append(cid)
+        # config.ADMINS.append(cid)
+        await message.answer('You are not an admin.', reply_markup=ReplyKeyboardRemove())
 
     await message.answer('Admin mode enabled.', reply_markup=ReplyKeyboardRemove())
 
