@@ -27,17 +27,11 @@ async def order_answer(message, orders):
     res = ''
 
     for order in orders:
-        # Assuming your 'orders' table has these columns:
-        # cid, usr_name, usr_address, products, status 
-        # ... You can adjust the column names if they are different.
-
-        order_id = order[3]  # Assuming order ID is in the 4th column
+        order_id = order[3]
         user_name = order[1]
         user_address = order[2]
-        products = order[3]  # Assuming products are stored as a string (e.g., 'idx1=quantity1 idx2=quantity2')
-        # status = 'Paid' if order[4] == 1 else 'Pending'
+        products = order[3] 
 
-        # Parse the products string into a readable list
         product_list = []
         for item in products.split(' '):
             idx, quantity = item.split('=')
@@ -48,12 +42,11 @@ async def order_answer(message, orders):
             else:
                 product_list.append(f'  * Product not found (ID: {idx})')
 
-        # Construct the formatted order details
-        res += f'Order <b>№{order_id}</b>\n'
-        res += f'User: {user_name}\n'
-        res += f'Address: {user_address}\n'
-        res += f'Products:\n'
+        # Improved formatting:
+        res += f"**Order №{order_id}**\n"
+        res += f"**User:** {user_name}\n"
+        res += f"**Address:** {user_address}\n"
+        res += f"**Products:**\n"
         res += '\n'.join(product_list)
-        # res += f'Status: {status}\n\n'
 
     await message.answer(res)
