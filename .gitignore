@@ -15,3 +15,6 @@ data/database.db
 .history/
 
 telegram_bot_venv/
+
+count.py
+output.txt

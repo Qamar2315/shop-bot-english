@@ -48,10 +48,6 @@ async def user_mode(message: types.Message):
 async def admin_mode(message: types.Message):
 
     cid = message.chat.id
-    print(cid)
-    print(config.ADMINS)
-    print(cid in config.ADMINS)
-    print(cid not in config.ADMINS)
     if cid not in config.ADMINS:
         await message.answer('You are not an admin.', reply_markup=ReplyKeyboardRemove())
     else:
