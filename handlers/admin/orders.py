@@ -30,23 +30,24 @@ async def order_answer(message, orders):
         order_id = order[3]
         user_name = order[1]
         user_address = order[2]
-        products = order[3] 
+        products = order[3]
 
         product_list = []
         for item in products.split(' '):
             idx, quantity = item.split('=')
-            product_data = db.fetchone('SELECT title, price FROM products WHERE idx=?', (idx,)) 
+            product_data = db.fetchone('SELECT title, price FROM products WHERE idx=?', (idx,))
             if product_data:
                 product_title, product_price = product_data
-                product_list.append(f'  * {product_title} ({quantity} pcs, {product_price}£)') 
+                product_list.append(f'  - {product_title} ({quantity} pcs, {product_price}£)')
             else:
-                product_list.append(f'  * Product not found (ID: {idx})')
+                product_list.append(f'  - Product not found (ID: {idx})')
 
-        # Improved formatting:
-        res += f"**Order №{order_id}**\n"
-        res += f"**User:** {user_name}\n"
-        res += f"**Address:** {user_address}\n"
-        res += f"**Products:**\n"
+        # Improved formatting without '**':
+        res += f"Order ID: {order_id}\n"
+        res += f"User: {user_name}\n"
+        res += f"Address: {user_address}\n"
+        res += "Products:\n"
         res += '\n'.join(product_list)
+        res += '\n\n'  # Adding extra newline characters between orders
 
     await message.answer(res)
