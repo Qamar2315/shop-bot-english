@@ -35,7 +35,7 @@ async def order_answer(message, orders):
         user_name = order[1]
         user_address = order[2]
         products = order[3]  # Assuming products are stored as a string (e.g., 'idx1=quantity1 idx2=quantity2')
-        status = 'Paid' if order[4] == 1 else 'Pending'
+        # status = 'Paid' if order[4] == 1 else 'Pending'
 
         # Parse the products string into a readable list
         product_list = []
@@ -54,6 +54,6 @@ async def order_answer(message, orders):
         res += f'Address: {user_address}\n'
         res += f'Products:\n'
         res += '\n'.join(product_list)
-        res += f'Status: {status}\n\n'
+        # res += f'Status: {status}\n\n'
 
     await message.answer(res)
